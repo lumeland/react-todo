@@ -5,7 +5,7 @@ import Model from "./model.js";
 const model = new Model("react-todos");
 
 function render() {
-  ReactDOM.hydrate(
+  ReactDOM.render(
     <App model={model} />,
     document.getElementById("app"),
   );
