@@ -1,0 +1,27 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Deno environment
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - name: Run lume
+        run: |
+          deno run -A https://deno.land/x/lume/ci.ts --location=https://lumeland.github.io/react-todo/
+      - name: Deploy
+        uses: crazy-max/ghaction-github-pages@v2.0.1
+        with:
+          build_dir: _site
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
