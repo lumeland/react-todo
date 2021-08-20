@@ -17,6 +17,7 @@ export default class TodoModel {
 
   addTodo(title) {
     this.todos = this.todos.concat({
+      id: (new Date()).getTime(),
       title: title,
       completed: false,
     });
