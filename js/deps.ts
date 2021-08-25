@@ -1,3 +1,3 @@
-export * as React from "https://jspm.dev/react@17.0.2";
-export * as ReactDOM from "https://jspm.dev/react-dom@17.0.2";
-export { default as classNames } from "https://esm.sh/classnames@2.3.1";
+export * as React from "../vendor/react-deno/react.ts";
+export * as ReactDOM from "../vendor/react-deno/dom.ts";
+export { default as classNames } from "https://cdn.jsdelivr.net/gh/JedWatson/classnames@next/index.js";

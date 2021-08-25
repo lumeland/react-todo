@@ -21,6 +21,6 @@ with the following changes:
 
 ## To-dos:
 
+- [x] Bundle js to a single file.
 - [ ] Server side rendering.
-- [ ] Bundle js to a single file.
 - [ ] Replace/remove deprecated dependencies (like `director`)

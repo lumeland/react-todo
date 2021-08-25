@@ -1,6 +1,6 @@
 import { React, ReactDOM } from "./deps.ts";
-import App from "./components/app.jsx";
-import Model from "./model.js";
+import App from "./components/app.tsx";
+import Model from "./model.ts";
 
 const model = new Model("react-todos");
 
