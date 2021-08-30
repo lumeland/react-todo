@@ -1,7 +1,6 @@
 /// <reference lib="dom" />
 
-import { React } from "../deps.ts";
-import { KeyboardEvent } from "../../vendor/react-deno/src/react.d.ts";
+import { KeyboardEvent, React } from "../deps.ts";
 
 export interface Props {
   onCreate: (name: string) => void;

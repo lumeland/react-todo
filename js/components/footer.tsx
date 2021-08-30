@@ -9,10 +9,11 @@ export interface Props {
   filter: "all" | "active" | "completed";
   completedCount: number;
   onClearCompleted: () => void;
+  onChangeFilter: (filter: "all" | "active" | "completed") => void;
 }
 
 export default function Footer(
-  { count, onClearCompleted, filter, completedCount }: Props,
+  { count, onClearCompleted, filter, completedCount, onChangeFilter }: Props,
 ) {
   return (
     <footer className="footer">
@@ -21,30 +22,30 @@ export default function Footer(
       </span>
       <ul className="filters">
         <li>
-          <a
-            href="#/"
+          <button
+            onClick={() => onChangeFilter(ALL_TODOS)}
             className={classNames({ selected: filter === ALL_TODOS })}
           >
             All
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#/active"
+          <button
+            onClick={() => onChangeFilter(ACTIVE_TODOS)}
             className={classNames({ selected: filter === ACTIVE_TODOS })}
           >
             Active
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#/completed"
+          <button
+            onClick={() => onChangeFilter(COMPLETED_TODOS)}
             className={classNames({
               selected: filter === COMPLETED_TODOS,
             })}
           >
             Completed
-          </a>
+          </button>
         </li>
       </ul>
       {!!(completedCount > 0) && (

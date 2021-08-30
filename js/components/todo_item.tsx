@@ -1,7 +1,6 @@
 /// <reference lib="dom" />
 
-import { classNames, React } from "../deps.ts";
-import { KeyboardEvent } from "../../vendor/react-deno/src/react.d.ts";
+import { classNames, KeyboardEvent, React } from "../deps.ts";
 
 const { useEffect, useState } = React;
 

@@ -2,58 +2,97 @@ import { React } from "../deps.ts";
 import TodoHeader from "./header.tsx";
 import TodoFooter from "./footer.tsx";
 import TodoItem from "./todo_item.tsx";
-import Model from "../model.ts";
 
-const { useEffect, useState } = React;
+const { useState, useEffect } = React;
 
 const ALL_TODOS = "all";
 const ACTIVE_TODOS = "active";
 const COMPLETED_TODOS = "completed";
 
+export interface Todo {
+  title: string;
+  completed: boolean;
+}
+
 export interface State {
   filter: "all" | "active" | "completed";
-  newTodo: string;
+  todos: Todo[];
 }
 
-export interface Props {
-  model: Model;
-}
+export default function App() {
+  const namespace = "react-todos";
 
-export default function App({ model }: Props) {
   const [state, setState] = useState<State>({
     filter: ALL_TODOS,
-    newTodo: "",
+    todos: readStore(namespace),
   });
 
   useEffect(() => {
-    // @ts-ignore: Router object is global
-    const router = new Router({
-      "/": () => setState({ ...state, filter: ALL_TODOS }),
-      "/active": () => setState({ ...state, filter: ACTIVE_TODOS }),
-      "/completed": () => setState({ ...state, filter: COMPLETED_TODOS }),
-    });
-    router.init("/");
-  }, []);
-
-  const todos = model.todos;
-
-  const shownTodos = todos.filter(function (todo) {
-    switch (state.filter) {
-      case ACTIVE_TODOS:
-        return !todo.completed;
-      case COMPLETED_TODOS:
-        return todo.completed;
-      default:
-        return true;
-    }
+    writeStore(namespace, state.todos);
   });
 
-  const activeTodoCount = todos.filter((todo) => !todo.completed).length;
-  const completedCount = todos.length - activeTodoCount;
+  const activeTodoCount = state.todos.filter((todo) => !todo.completed).length;
+  const completedCount = state.todos.length - activeTodoCount;
+  const todos = state.todos.filter((todo) => {
+    if (state.filter === ALL_TODOS) {
+      return true;
+    }
+
+    return (state.filter === COMPLETED_TODOS)
+      ? todo.completed
+      : !todo.completed;
+  });
+
+  function onCreate(title: string) {
+    const todo: Todo = {
+      title,
+      completed: false,
+    };
+
+    setState({
+      ...state,
+      todos: [...state.todos, todo],
+    });
+  }
+
+  function onToggleAll(completed: boolean) {
+    setState({
+      ...state,
+      todos: state.todos.map((t) => ({ ...t, completed })),
+    });
+  }
+
+  function onDestroy(todo: Todo) {
+    setState({
+      ...state,
+      todos: state.todos.filter((t) => t !== todo),
+    });
+  }
+
+  function onChangeCompleted(todo: Todo, completed: boolean) {
+    setState({
+      ...state,
+      todos: state.todos.map((t) => (t !== todo ? t : { ...t, completed })),
+    });
+  }
+
+  function onChangeTitle(todo: Todo, title: string) {
+    setState({
+      ...state,
+      todos: state.todos.map((t) => (t !== todo ? t : { ...t, title })),
+    });
+  }
+
+  function onClearCompleted() {
+    setState({
+      ...state,
+      todos: state.todos.filter((t) => !t.completed),
+    });
+  }
 
   return (
     <div>
-      <TodoHeader onCreate={(val: string) => model.addTodo(val)} />
+      <TodoHeader onCreate={(val: string) => onCreate(val)} />
 
       {!!todos.length && (
         <section className="main">
@@ -61,22 +100,22 @@ export default function App({ model }: Props) {
             id="toggle-all"
             className="toggle-all"
             type="checkbox"
-            onChange={(ev) => model.toggleAll(ev.target.checked)}
+            onChange={(ev) => onToggleAll(ev.target.checked)}
             checked={activeTodoCount === 0}
           />
           <label
             htmlFor="toggle-all"
           />
           <ul className="todo-list">
-            {shownTodos.map((todo) => (
+            {todos.map((todo, index) => (
               <TodoItem
-                key={todo.id}
+                key={index}
                 title={todo.title}
-                onChangeTitle={(title) => model.save(todo, title)}
                 completed={todo.completed}
+                onChangeTitle={(title) => onChangeTitle(todo, title)}
                 onChangeCompleted={(completed) =>
-                  model.changeCompleted(todo, completed)}
-                onDestroy={() => model.destroy(todo)}
+                  onChangeCompleted(todo, completed)}
+                onDestroy={() => onDestroy(todo)}
               />
             ))}
           </ul>
@@ -88,9 +127,27 @@ export default function App({ model }: Props) {
           count={activeTodoCount}
           completedCount={completedCount}
           filter={state.filter}
-          onClearCompleted={() => model.clearCompleted()}
+          onChangeFilter={(filter) => setState({ ...state, filter })}
+          onClearCompleted={onClearCompleted}
         />
       )}
     </div>
   );
+}
+
+function readStore(namespace: string): Todo[] {
+  if (typeof Deno !== "undefined") {
+    return [];
+  }
+
+  const store = localStorage.getItem(namespace);
+  return (store && JSON.parse(store)) || [];
+}
+
+function writeStore(namespace: string, data: Todo[]): void {
+  if (typeof Deno !== "undefined") {
+    return;
+  }
+
+  localStorage.setItem(namespace, JSON.stringify(data));
 }
