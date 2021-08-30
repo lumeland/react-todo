@@ -11,7 +11,7 @@ site
   .copy("vendor")
   .use(bundler({
     extensions: [".ts", ".tsx", ".js", ".jsx"],
-    entries: ["/js/main.jsx"],
+    entries: ["/app/main.jsx"],
     includes: [
       "https://cdn.jsdelivr.net/gh/JedWatson/classnames@next/index.js",
       "https://deno.land/x/react_deno@17.0.2/react.ts",
