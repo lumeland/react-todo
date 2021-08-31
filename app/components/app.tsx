@@ -136,18 +136,18 @@ export default function App() {
 }
 
 function readStore(namespace: string): Todo[] {
-  if (typeof Deno !== "undefined") {
+  try {
+    const store = localStorage.getItem(namespace);
+    return (store && JSON.parse(store)) || [];
+  } catch {
     return [];
   }
-
-  const store = localStorage.getItem(namespace);
-  return (store && JSON.parse(store)) || [];
 }
 
 function writeStore(namespace: string, data: Todo[]): void {
-  if (typeof Deno !== "undefined") {
-    return;
+  try {
+    localStorage.setItem(namespace, JSON.stringify(data));
+  } catch {
+    // ignore
   }
-
-  localStorage.setItem(namespace, JSON.stringify(data));
 }

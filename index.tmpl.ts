@@ -15,6 +15,7 @@ export default function (_data: unknown, { url }: Helpers) {
 	<html lang="en">
 		<head>
 			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 			<title>React • TodoMVC</title>
 			<link rel="stylesheet" href="${url("/styles.css")}">
 		</head>

@@ -1,13 +1,13 @@
 /// <reference lib="dom" />
 
-import { KeyboardEvent, React } from "../deps.ts";
+import { React } from "../deps.ts";
 
 export interface Props {
   onCreate: (name: string) => void;
 }
 
 export default function Header({ onCreate }: Props) {
-  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     const input = event.target as HTMLInputElement;
 
     if (event.code == "Escape") {

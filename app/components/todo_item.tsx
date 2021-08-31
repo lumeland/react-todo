@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
 
-import { classNames, KeyboardEvent, React } from "../deps.ts";
+import { classNames, React } from "../deps.ts";
 
 const { useEffect, useState } = React;
 
@@ -18,7 +18,7 @@ export default function TodoItem(
   const [state, setState] = useState({ editing: false });
   const editField = React.createRef<HTMLInputElement>();
 
-  function handleKeyDown(event: KeyboardEvent) {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.code === "Escape") {
       setState({ editing: false });
     } else if (event.code === "Enter") {
