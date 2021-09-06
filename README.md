@@ -25,10 +25,6 @@ with the following changes:
   - The `entries` array contains the different entry points (in this example,
     the file `/app/main.jsx` is the unique entry point, and will output
     `/app/main.js` with all dependencies included).
-  - The `includes` array contain the external dependencies to be downloaded and
-    included in the bundler. (this is a limitation of the current `Deno.emit()`
-    that cannot download the external dependencies automatically
-    [until this issue is fixed](https://github.com/denoland/deno/issues/9866))
   - The `options` key contains the `Deno.emit()` available options.
     [See Deno docs for more info](https://doc.deno.land/builtin/unstable#Deno.emit)
 - The HTML file is build in `index.tmpl.ts`:
