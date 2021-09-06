@@ -7,8 +7,6 @@ const site = lume();
 
 site
   .ignore("README.md")
-  .ignore("vendor")
-  .copy("vendor")
   .use(bundler({
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     entries: ["/app/main.jsx"],
