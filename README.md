@@ -8,7 +8,7 @@ project, and its
 [React version](https://github.com/tastejs/todomvc/tree/master/examples/react)
 with the following changes:
 
-- Upgraded to React 17 (the original version is in React `0.13`).
+- Upgraded React (the original version is in React `0.13`).
 - Code formatted to Deno standards and converted to Typescript.
 - JSX is compiled at buildtime, instead runtime bundled to a single file and
   minified.
@@ -22,11 +22,9 @@ with the following changes:
 - Edit `_config.ts` file to change Lume configuration, specially the `bundler`
   plugin:
   - The `extensions` array indicates the types of files to load.
-  - The `entries` array contains the different entry points (in this example,
-    the file `/app/main.jsx` is the unique entry point, and will output
-    `/app/main.js` with all dependencies included).
   - The `options` key contains the `Deno.emit()` available options.
     [See Deno docs for more info](https://doc.deno.land/builtin/unstable#Deno.emit)
+- Edit the `import_map.json` file to add/change dependencies.
 - The HTML file is build in `index.tmpl.ts`:
   - Imports the `<App>` component and render it.
   - Exports a function that returns a string with the html page, including the
@@ -35,6 +33,4 @@ with the following changes:
 ## Getting Started
 
 1. Clone this Repository `git clone https://github.com/lumeland/react-todo.git`
-2. Make sure you have the latest version of Deno and lume installed:
-   `deno upgrade && lume upgrade`
-3. Run Lume `lume --serve`
+2. Run `deno task serve`
