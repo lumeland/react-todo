@@ -1,4 +1,5 @@
-import { classNames, React } from "../deps.ts";
+import React from "react";
+import classNames from "class-names";
 
 const ALL_TODOS = "all";
 const ACTIVE_TODOS = "active";

@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v1.7.3/",
+    "react-dom": "https://deno.land/x/react_deno@17.0.2/dom.ts",
+    "react": "https://deno.land/x/react_deno@17.0.2/react.ts",
+    "class-names": "https://cdn.jsdelivr.net/gh/JedWatson/classnames@next/index.js",
+    "react-types": "https://deno.land/x/react_deno@17.0.2/src/react.d.ts"
+  }
+}

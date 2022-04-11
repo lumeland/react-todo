@@ -1,6 +1,7 @@
 /// <reference lib="dom" />
 
-import { classNames, React } from "../deps.ts";
+import React from "react";
+import classNames from "class-names";
 
 const { useEffect, useState } = React;
 

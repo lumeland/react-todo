@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
 
-import { React } from "../deps.ts";
+import React from "react";
 
 export interface Props {
   onCreate: (name: string) => void;

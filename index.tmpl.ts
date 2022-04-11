@@ -1,7 +1,7 @@
 import { Helper } from "lume/core.ts";
 import ReactDOMServer from "https://deno.land/x/react_deno@17.0.2/dom_server.ts";
 import React from "https://deno.land/x/react_deno@17.0.2/react.ts";
-import App from "./app/components/app.tsx";
+import App from "./app/app.tsx";
 
 const ssr = ReactDOMServer.renderToString(React.createElement(App));
 
@@ -29,7 +29,7 @@ export default function (_data: unknown, { url }: Helpers) {
 				</p>
 			</footer>
 
-			<script type="module" src="${url("/app/main.js")}"></script>
+			<script type="module" src="${url("/main.js")}" bundle></script>
 		</body>
 	</html>
 	`;

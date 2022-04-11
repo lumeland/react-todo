@@ -1,4 +1,4 @@
-import { React } from "../deps.ts";
+import React from "react";
 import TodoHeader from "./header.tsx";
 import TodoFooter from "./footer.tsx";
 import TodoItem from "./todo_item.tsx";
@@ -103,9 +103,7 @@ export default function App() {
             onChange={(ev) => onToggleAll(ev.target.checked)}
             checked={activeTodoCount === 0}
           />
-          <label
-            htmlFor="toggle-all"
-          />
+          <label htmlFor="toggle-all" />
           <ul className="todo-list">
             {todos.map((todo, index) => (
               <TodoItem
