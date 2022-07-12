@@ -1,6 +1,6 @@
 import { Helper } from "lume/core.ts";
-import ReactDOMServer from "https://deno.land/x/react_deno@17.0.2/dom_server.ts";
-import React from "https://deno.land/x/react_deno@17.0.2/react.ts";
+import ReactDOMServer from "react-dom/server";
+import React from "react";
 import App from "./app/app.tsx";
 
 const ssr = ReactDOMServer.renderToString(React.createElement(App));
