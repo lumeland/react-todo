@@ -1,5 +1,3 @@
-/// <reference lib="dom" />
-
 import React from "react";
 
 export interface Props {
