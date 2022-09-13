@@ -1,11 +1,10 @@
-import React from "react";
+import { ReactDOMClient } from "react";
 import App from "./app/app.tsx";
-import ReactDOM from "react-dom";
 
 function render() {
-  ReactDOM.hydrate(
-    <App />,
+  ReactDOMClient.hydrateRoot(
     document.getElementById("app"),
+    <App />,
   );
 }
 

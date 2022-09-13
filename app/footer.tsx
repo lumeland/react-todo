@@ -1,4 +1,3 @@
-import React from "react";
 import classNames from "class-names";
 
 const ALL_TODOS = "all";

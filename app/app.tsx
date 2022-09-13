@@ -1,4 +1,4 @@
-import React from "react";
+import { React } from "react";
 import TodoHeader from "./header.tsx";
 import TodoFooter from "./footer.tsx";
 import TodoItem from "./todo_item.tsx";

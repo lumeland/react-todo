@@ -1,7 +1,7 @@
-import React from "react";
+import { React } from "react";
 import classNames from "class-names";
 
-const { useEffect, useState } = React;
+const { useEffect, useState, createRef } = React;
 
 export interface Props {
   onChangeTitle: (title: string) => void;
@@ -15,7 +15,7 @@ export default function TodoItem(
   { onChangeTitle, onDestroy, onChangeCompleted, title, completed }: Props,
 ) {
   const [state, setState] = useState({ editing: false });
-  const editField = React.createRef<HTMLInputElement>();
+  const editField = createRef<HTMLInputElement>();
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.code === "Escape") {

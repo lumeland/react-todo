@@ -1,10 +1,18 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "build": "deno run -A https://deno.land/x/lume@v1.9.1/ci.ts",
-    "serve": "deno task build -s"
+    "build": "deno task lume",
+    "serve": "deno task lume -s",
+    "lume": "deno eval \"import 'lume/task.ts'\" --"
   },
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "dom.asynciterable", "deno.ns"]
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns"
+    ]
   }
 }

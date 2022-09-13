@@ -1,7 +1,6 @@
 import lume from "lume/mod.ts";
 import esbuild from "lume/plugins/esbuild.ts";
-import terser from "lume/plugins/terser.ts";
-import postcss from "lume/plugins/postcss.ts";
+import lightningcss from "lume/plugins/lightningcss.ts";
 
 const site = lume();
 
@@ -11,7 +10,6 @@ site
   .use(esbuild({
     extensions: [".jsx"],
   }))
-  .use(terser())
-  .use(postcss());
+  .use(lightningcss());
 
 export default site;
