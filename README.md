@@ -19,16 +19,7 @@ with the following changes:
 ### Implementation notes
 
 - The React code is in `/app/` folder.
-- Edit `_config.ts` file to change Lume configuration, specially the `bundler`
-  plugin:
-  - The `extensions` array indicates the types of files to load.
-  - The `options` key contains the `Deno.emit()` available options.
-    [See Deno docs for more info](https://doc.deno.land/builtin/unstable#Deno.emit)
-- Edit the `import_map.json` file to add/change dependencies.
 - The HTML file is build in `index.tmpl.ts`:
-  - Imports the `<App>` component and render it.
-  - Exports a function that returns a string with the html page, including the
-    React app.
 
 ## Getting Started
 
