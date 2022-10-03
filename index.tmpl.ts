@@ -1,5 +1,6 @@
 import { Helper } from "lume/core.ts";
-import { React, ReactDOMServer } from "react";
+import React from "npm:react";
+import ReactDOMServer from "npm:react-dom/server";
 import App from "./app/app.tsx";
 
 const ssr = ReactDOMServer.renderToString(React.createElement(App));

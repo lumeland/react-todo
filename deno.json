@@ -1,5 +1,5 @@
 {
-  "importMap": "import_map.json",
+  "importMap": "./import_map.json",
   "tasks": {
     "build": "deno task lume",
     "serve": "deno task lume -s",
@@ -7,7 +7,7 @@
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
+    "jsxImportSource": "npm:react",
     "lib": [
       "dom",
       "dom.iterable",

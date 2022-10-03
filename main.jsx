@@ -1,4 +1,4 @@
-import { ReactDOMClient } from "react";
+import ReactDOMClient from "npm:react-dom/client";
 import App from "./app/app.tsx";
 
 function render() {

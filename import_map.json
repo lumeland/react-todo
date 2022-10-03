@@ -1,8 +1,6 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v1.11.2/",
-    "class-names": "https://cdn.jsdelivr.net/gh/JedWatson/classnames@next/index.js",
-    "react/jsx-runtime": "https://deno.land/x/lume@v1.11.2/deps/react_runtime.ts",
-    "react": "https://deno.land/x/lume@v1.11.2/deps/react.ts"
+    "lume/": "https://deno.land/x/lume@v1.12.0/",
+    "class-names": "https://cdn.jsdelivr.net/gh/JedWatson/classnames@next/index.js"
   }
 }

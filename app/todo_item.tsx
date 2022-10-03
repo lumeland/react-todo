@@ -1,7 +1,5 @@
-import { React } from "react";
+import { createRef, useEffect, useState } from "npm:react";
 import classNames from "class-names";
-
-const { useEffect, useState, createRef } = React;
 
 export interface Props {
   onChangeTitle: (title: string) => void;
