@@ -1,6 +1,6 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v1.12.0/",
+    "lume/": "https://deno.land/x/lume@v1.15.3/",
     "class-names": "https://cdn.jsdelivr.net/gh/JedWatson/classnames@next/index.js"
   }
 }
