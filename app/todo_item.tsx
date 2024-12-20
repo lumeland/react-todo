@@ -1,4 +1,4 @@
-import { createRef, useEffect, useState } from "npm:react";
+import { createRef, useEffect, useState } from "react";
 import classNames from "class-names";
 
 export interface Props {
