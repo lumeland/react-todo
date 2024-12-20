@@ -1,15 +1,10 @@
-import { Helper } from "lume/core.ts";
-import React from "npm:react";
-import ReactDOMServer from "npm:react-dom/server";
+import React from "react";
+import ReactDOMServer from "react-dom/server";
 import App from "./app/app.tsx";
 
 const ssr = ReactDOMServer.renderToString(React.createElement(App));
 
-interface Helpers {
-  [key: string]: Helper;
-}
-
-export default function (_data: unknown, { url }: Helpers) {
+export default function (_data: Lume.Data, { url }: Lume.Helpers) {
   return `<!doctype html>
 
 	<html lang="en">

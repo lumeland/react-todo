@@ -1,14 +1,22 @@
 {
-  "importMap": "./import_map.json",
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v2.4.3/",
+    "class-names": "npm:classnames",
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/"
+  },
   "lock": false,
   "tasks": {
-    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume",
     "serve": "deno task lume -s"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "npm:react",
+    "jsxImportSource": "https://esm.sh/react@18.3.1",
+    "types": [
+      "lume/types.ts"
+    ],
     "lib": [
       "dom",
       "dom.iterable",

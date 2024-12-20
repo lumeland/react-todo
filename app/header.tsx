@@ -1,9 +1,11 @@
+import { KeyboardEvent } from "react";
+
 export interface Props {
   onCreate: (name: string) => void;
 }
 
 export default function Header({ onCreate }: Props) {
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+  function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     const input = event.target as HTMLInputElement;
 
     if (event.code == "Escape") {
