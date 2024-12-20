@@ -4,24 +4,33 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Clone repository
+        uses: actions/checkout@v4
 
       - name: Setup Deno environment
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
+        uses: denoland/setup-deno@v2
 
-      - name: Run lume
-        run: |
-          deno run -A https://deno.land/x/lume/ci.ts --location=https://lumeland.github.io/react-todo/
-      - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v2.0.1
+      - name: Build site
+        run: deno task build --location=https://lumeland.github.io/react-todo/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          build_dir: _site
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: "_site"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
