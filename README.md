@@ -14,7 +14,6 @@ with the following changes:
   minified.
 - Removed unmaintained dependencies (like `director`).
 - Use React hooks to manage state.
-- Server-side rendered (hydrated in client-side).
 
 ### Implementation notes
 
