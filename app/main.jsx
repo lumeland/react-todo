@@ -1,5 +1,5 @@
 import ReactDOMClient from "react-dom/client";
-import App from "./app/app.tsx";
+import App from "./app.tsx";
 
 function render() {
   ReactDOMClient.hydrateRoot(

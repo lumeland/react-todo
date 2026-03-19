@@ -1,0 +1,17 @@
+{
+  "imports": {
+    "class-names": "npm:classnames",
+    "react": "npm:react@18.3",
+    "react-dom": "npm:react-dom@18.3"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns"
+    ]
+  }
+}

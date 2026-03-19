@@ -1,9 +1,3 @@
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import App from "./app/app.tsx";
-
-const ssr = ReactDOMServer.renderToString(React.createElement(App));
-
 export default function (_data: Lume.Data, { url }: Lume.Helpers) {
   return `<!doctype html>
 
@@ -15,7 +9,7 @@ export default function (_data: Lume.Data, { url }: Lume.Helpers) {
 			<link rel="stylesheet" href="${url("/styles.css")}">
 		</head>
 		<body>
-			<section class="todoapp" id="app">${ssr}</section>
+			<section class="todoapp" id="app"></section>
 			<footer class="info">
 				<p>Double-click to edit a todo</p>
 				<p>
@@ -24,7 +18,7 @@ export default function (_data: Lume.Data, { url }: Lume.Helpers) {
 				</p>
 			</footer>
 
-			<script type="module" src="${url("/main.js")}" bundle></script>
+			<script type="module" src="${url("/app/main.js")}"></script>
 		</body>
 	</html>
 	`;

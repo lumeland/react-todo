@@ -7,9 +7,10 @@ const site = lume();
 
 site
   .ignore("README.md")
-  .ignore("app")
+  .add("app/main.jsx")
+  .add("styles.css")
   .use(esbuild({
-    extensions: [".jsx"],
+    denoConfig: "app/deno.json",
   }))
   .use(lightningcss())
   .use(sourceMaps({
